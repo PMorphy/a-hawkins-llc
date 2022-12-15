@@ -1,8 +1,17 @@
 .container {
   max-width: 1440px;
+  height: 100vh;
   padding: 40px;
   margin: 0 auto;
-  padding-top: 6rem;
+  padding-top: 8rem;
+
+  @media (max-width: $desktop) {
+    padding: 8rem 20px 0;
+  }
+
+  @media (max-width: $tablet) {
+    padding: 8rem 10px 0;
+  }
 }
 
 .navbar-header {
@@ -10,6 +19,7 @@
   height: 6rem;
   width: 100%;
   padding: 0 40px;
+  background-color: $primary-color;
 
   .navbar-nav {
     height: 100%;
@@ -17,15 +27,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
 
-  .navbar-logo {
-    font-size: clamp(1.2rem, 1.8vw, 1.8rem);
-    font-weight: 300;
-  }
+    .navbar-logo {
+      font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+      font-weight: 300;
+      color: $white;
+    }
+    .navbar-menu {
+      display: flex;
+      gap: 0.8rem;
 
-  .navbar-menu {
-    display: flex;
-    gap: 1.8rem;
+      .navbar-menu-item {
+        padding: 0.4rem 0.7rem;
+
+        & > * {
+          color: $white;
+        }
+      }
+    }
+
+    @media (max-width: $tablet) {
+      .navbar-menu {
+        display: none;
+      }
+    }
   }
 }
