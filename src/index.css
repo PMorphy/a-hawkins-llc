@@ -1,0 +1,273 @@
+/* CONSTANTS */
+:root {
+  --primary-color: rgb(14, 85, 139);
+  --secondary-color: rgb(161, 255, 167);
+
+  --white: #f4f4f4;
+  --black: #333;
+
+  --desktop: 1024px;
+  --tablet: 601px;
+  --mobile: 360px;
+}
+
+/* BASIC */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  background-color: var(--white);
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* LAYOUT */
+.container {
+  max-width: 1440px;
+  height: 100vh;
+  padding: 40px;
+  margin: 0 auto;
+  padding-top: 8rem;
+}
+
+.navbar-header {
+  position: fixed;
+  height: 6rem;
+  width: 100%;
+  padding: 0 40px;
+  background-color: var(--primary-color);
+}
+
+.navbar-header .navbar-nav {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-header .navbar-logo {
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  font-weight: 300;
+  color: var(--white);
+}
+
+.navbar-header .navbar-menu {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.navbar-header .navbar-menu .navbar-menu-item {
+  padding: 0.4rem 0.7rem;
+}
+
+.navbar-header .navbar-menu .navbar-menu-item > * {
+  color: var(--white);
+}
+
+/* DASHBOARD */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1.8rem;
+  height: 100%;
+
+  grid-template-areas:
+    'homes-list news maintenance'
+    'homes-list news maintenance'
+    'homes-list news past-due-rents';
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1.8rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.home-cards .home-card {
+  border: 3px solid green;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+}
+
+.home-cards .home-card .home-card--title {
+  font-size: 2.1rem;
+  color: var(--primary-color);
+  margin-bottom: 1.2rem;
+}
+
+.home-cards .home-card .home-card--address {
+  margin-bottom: 0.8rem;
+}
+
+.home-cards .home-card .home-card--icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1.8rem 0;
+}
+
+.home-cards .home-card .home-card--icons > * {
+  color: var(--primary-color);
+}
+
+.home-cards .home-card p {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.8rem;
+}
+
+.news {
+  grid-area: news;
+  background-color: darkseagreen;
+}
+
+.maintenance {
+  grid-area: maintenance;
+  background-color: lightcoral;
+}
+
+.past-due-rents {
+  grid-area: past-due-rents;
+  background-color: lightblue;
+}
+
+.dashboard .homes-list {
+  grid-area: homes-list;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard .homes-list .home-list-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  min-height: 2rem;
+}
+
+.dashboard .homes-list .home-list-top .homes-list-title {
+  font-weight: 300;
+  letter-spacing: 1.2px;
+  font-size: 1.6rem;
+}
+
+/* DETAILS */
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.details .home-details--title {
+  font-weight: 300;
+  margin-bottom: 1.1rem;
+}
+
+.details .form {
+  max-width: 650px;
+  margin: 0 auto;
+  background-color: rgb(200, 200, 254);
+}
+
+.details .form .title-address {
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+
+.details .form .form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0.2rem 0.4rem;
+}
+
+.details .form .form-control label {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 0.2rem;
+}
+
+.details .form .form-control input {
+  height: 33px;
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0 0.4rem;
+}
+
+.details .form .city-state-zip {
+  display: grid;
+  grid-template-columns: 65% 10% 20%;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 8rem 20px 0;
+  }
+  .dashboard {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+    grid-template-areas:
+      'homes-list maintenance'
+      'homes-list maintenance'
+      'homes-list past-due-rents'
+      'news       news';
+  }
+}
+
+@media (max-width: 601px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  .container {
+    padding: 8rem 10px 0;
+  }
+
+  .dashboard {
+    padding: 0.7rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+
+    grid-template-areas:
+      'homes-list'
+      'home-list'
+      'news'
+      'news'
+      'maintenance'
+      'past-due-rents';
+  }
+}

@@ -16,23 +16,28 @@ const HomeDetailsPage = ({ details }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(addressRef.current.value);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (details) console.log(details);
+  }, [details]);
 
   return (
     <div className='details'>
       <h2 className='home-details--title'>
         {details ? "Update Home's Details" : 'Add New Home'}
       </h2>
-      <form onSubmit={onSubmit}>
-        <div className='form-control'>
-          <label htmlFor='title'>Title</label>
-          <input type='text' ref={titleRef} id='title' />
-        </div>
-        <div className='form-control'>
-          <label htmlFor='address'>Address</label>
-          <input type='text' ref={addressRef} id='address' />
+      <form className='form' onSubmit={onSubmit}>
+        <div className='title-address'>
+          <div className='form-control'>
+            <label htmlFor='title'>Title</label>
+            <input type='text' ref={titleRef} id='title' />
+          </div>
+          <div className='form-control'>
+            <label htmlFor='address'>Address</label>
+            <input type='text' ref={addressRef} id='address' />
+          </div>
         </div>
         <div className='city-state-zip'>
           <div className='form-control'>
@@ -47,6 +52,9 @@ const HomeDetailsPage = ({ details }) => {
             <label htmlFor='address'>Zip</label>
             <input type='text' ref={zipRef} id='zip' />
           </div>
+        </div>
+        <div className='details-button-control'>
+          <button type='submit'>Add</button>
         </div>
       </form>
     </div>
